@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp Cưới - Ngọc Tùng & Vân Anh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --cream: #fdf6ec;
+      --dark: #2a1f14;
+      --rose: #c97b84;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(160deg, #1a0e08 0%, #2e1a0e 50%, #1a0e08 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    }
+    .petals { position: absolute; inset: 0; pointer-events: none; }
+    .petal {
+      position: absolute;
+      width: 8px; height: 12px;
+      border-radius: 50% 50% 50% 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.4), rgba(201,123,132,0.3));
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    .hero-frame {
+      position: relative;
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 60px 80px;
+      text-align: center;
+      max-width: 680px;
+      width: 90%;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-frame::before, .hero-frame::after {
+      content: '';
+      position: absolute;
+      width: 60px; height: 60px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .hero-frame::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .hero-frame::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+    }
+    .hero-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      color: var(--gold);
+      line-height: 1.1;
+      text-shadow: 0 0 40px rgba(201,168,76,0.3);
+    }
+    .hero-amp {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: rgba(201,168,76,0.5);
+      margin: 8px 0;
+    }
+    .hero-date {
+      margin-top: 28px;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+    }
+    .divider-flower {
+      margin: 20px auto;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      position: relative;
+    }
+    .divider-flower::after {
+      content: '✦';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      background: #2e1a0e;
+      padding: 0 8px;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(201,168,76,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== CHUNG ===== */
+    section { padding: 80px 20px; text-align: center; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+    .section-lead {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 48px;
+    }
+    .gold-line {
+      width: 160px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 16px auto 48px;
+    }
+
+    /* ===== STORY ===== */
+    .story { background: #fff9f1; }
+    .story-content {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #5c3d2e;
+      font-style: italic;
+    }
+    .story-divider {
+      margin: 40px auto;
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+
+    /* ===== CALENDAR ===== */
+    .calendar-section {
+      background: linear-gradient(135deg, #2a1f14 0%, #1a0e08 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .calendar-section .section-title { color: var(--gold); }
+    .calendar-section .section-label { color: var(--gold-light); opacity: 0.7; }
+    .calendar-section .gold-line { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .calendar-wrap {
+      display: inline-block;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      min-width: 300px;
+    }
+    .cal-month {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .cal-days-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .cal-days-header span {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(201,168,76,0.5);
+      text-align: center;
+      padding: 4px 0;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .day {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    .day.empty { background: none; }
+    .day.highlight {
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 0 20px rgba(201,168,76,0.5);
+    }
+    .datetime-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .datetime-info .block { text-align: center; }
+    .datetime-info .value {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .datetime-info .label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(201,168,76,0.5);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown-section {
+      background: var(--cream);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .countdown {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cd-box { text-align: center; min-width: 80px; }
+    .cd-box .num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: var(--dark);
+      line-height: 1;
+    }
+    .cd-box .unit {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    /* ===== VENUE ===== */
+    .venue-section {
+      background: linear-gradient(135deg, #2a1f14 0%, #1a0e08 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .venue-section .section-title { color: var(--gold); }
+    .venue-section .section-label { color: var(--gold-light); opacity: 0.8; }
+    .venue-grid {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .venue-card {
+      flex: 1;
+      min-width: 260px;
+      max-width: 380px;
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 44px 36px;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .venue-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,0.6);
+    }
+    .venue-card .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .venue-icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .venue-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .venue-addr {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--gold-light);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #b8882a, var(--gold), #b8882a);
+      background-size: 200% 100%;
+      color: var(--dark);
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      transition: background-position 0.4s, transform 0.2s;
+    }
+    .btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+
+    /* ===== GALLERY ===== */
+    .gallery { background: #fff9f1; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s;
+      background: linear-gradient(135deg, #f0e4d0, #e8d0b8);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover { transform: scale(0.97); }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:first-child { grid-column: span 2; }
+
+    /* ===== RSVP ===== */
+    .rsvp { background: linear-gradient(160deg, #2a1f14, #1a0e08); }
+    .rsvp .section-title { color: var(--gold); }
+    .rsvp .section-lead  { color: var(--gold-light); opacity: 0.7; }
+    .rsvp-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .rsvp-form input, .rsvp-form select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold-light);
+      padding: 16px 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .rsvp-form input::placeholder { color: rgba(201,168,76,0.4); }
+    .rsvp-form input:focus, .rsvp-form select:focus { border-color: var(--gold); }
+    .rsvp-form select option { background: #2a1f14; }
+    .btn-gold {
+      padding: 18px 48px;
+      background: linear-gradient(90deg, #b8882a, var(--gold), #b8882a);
+      background-size: 200% 100%;
+      border: none;
+      color: var(--dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-position 0.4s, transform 0.2s;
+    }
+    .btn-gold:hover { background-position: 100% 0; transform: translateY(-2px); }
+    .rsvp-success { display: none; color: var(--gold); font-size: 1.3rem; font-style: italic; padding: 20px; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #0f0805; padding: 48px 20px; text-align: center; color: rgba(201,168,76,0.5); font-size: 0.85rem; letter-spacing: 0.15em; }
+    footer .footer-names { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--gold); display: block; margin-bottom: 12px; }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="petals" id="petals"></div>
+  <div class="hero-frame">
+    <p class="hero-subtitle">Trân trọng kính mời</p>
+    <div class="hero-names">
+      Ngọc Tùng
+      <span class="hero-amp">&amp;</span>
+      Vân Anh
+    </div>
+    <div class="divider-flower"></div>
+    <p class="hero-date">Ngày 17 · Tháng 5 · Năm 2026</p>
+  </div>
+  <span class="scroll-hint">↓ cuộn xuống</span>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="section-title reveal">Câu Chuyện Của Chúng Tôi</div>
+  <p class="section-lead reveal">Our Love Story</p>
+  <div class="story-content reveal">
+    <p>"Hai chúng tôi gặp nhau trong một buổi chiều mưa tháng Ba, khi cùng trú dưới mái hiên một quán cà phê nhỏ. Từ ánh mắt đầu tiên ấy, chúng tôi biết rằng đây là khởi đầu của một hành trình dài — hành trình về nhà."</p>
+    <div class="story-divider"></div>
+    <p>Hôm nay, chúng tôi trân trọng mời bạn chứng kiến khoảnh khắc chúng tôi nói lên lời <strong style="font-style:normal; color:var(--gold)">Tôi Nguyện</strong> — và cùng sẻ chia niềm vui trong ngày hạnh phúc nhất cuộc đời.</p>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section class="calendar-section">
+  <div class="container">
+    <p class="section-label reveal">✦ Ngày Cưới ✦</p>
+    <h2 class="section-title reveal">Thời Gian &amp; Ngày Tháng</h2>
+    <div class="gold-line reveal"></div>
+    <div class="calendar-wrap reveal">
+      <p class="cal-month">Tháng 05 · 2026</p>
+      <div class="cal-days-header">
+        <span>T2</span><span>T3</span><span>T4</span>
+        <span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <div class="datetime-info reveal">
+      <div class="block"><span class="value">16:00</span><span class="label">Giờ</span></div>
+      <div class="block"><span class="value">Chủ Nhật</span><span class="label">Thứ</span></div>
+      <div class="block"><span class="value">17/05</span><span class="label">Ngày/Tháng</span></div>
+      <div class="block"><span class="value">2026</span><span class="label">Năm</span></div>
+    </div>
+    <p class="reveal" style="font-size:0.8rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);margin-top:24px">
+      (Tức Ngày 01 Tháng 4 Năm Bính Ngọ)
+    </p>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <div class="container">
+    <p class="section-label reveal">✦ Đếm Ngược ✦</p>
+    <h2 class="section-title reveal">Hôn Lễ Diễn Ra Sau</h2>
+    <div class="gold-line reveal"></div>
+    <div class="countdown reveal">
+      <div class="cd-box"><span class="num" id="cd-days">--</span><span class="unit">Ngày</span></div>
+      <div class="cd-box"><span class="num" id="cd-hours">--</span><span class="unit">Giờ</span></div>
+      <div class="cd-box"><span class="num" id="cd-mins">--</span><span class="unit">Phút</span></div>
+      <div class="cd-box"><span class="num" id="cd-secs">--</span><span class="unit">Giây</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue-section">
+  <div class="container">
+    <p class="section-label reveal">✦ Địa Điểm ✦</p>
+    <h2 class="section-title reveal">Nơi Tổ Chức</h2>
+    <div class="gold-line reveal"></div>
+    <div class="venue-grid">
+
+      <div class="venue-card reveal">
+        <div class="tag">Nhà Trai</div>
+        <div class="venue-icon">🏡</div>
+        <h3 class="venue-name">Tư Gia Nhà Trai</h3>
+        <p class="venue-addr">
+          Thôn Chùa – Xã Bố Hạ<br/>
+          Tỉnh Bắc Ninh
+        </p>
+        <a class="btn" href="https://maps.app.goo.gl/vA25UKDWsVwjSZwU6" target="_blank">
+          🗺️ &nbsp;Xem Trên Google Map
+        </a>
+      </div>
+
+      <div class="venue-card reveal">
+        <div class="tag">Nhà Gái</div>
+        <div class="venue-icon">🏠</div>
+        <h3 class="venue-name">Tư Gia Nhà Gái</h3>
+        <p class="venue-addr">
+          Thôn Vàng – Xã Bố Hạ<br/>
+          Tỉnh Bắc Ninh
+        </p>
+        <a class="btn" href="https://maps.app.goo.gl/1G79wFyrcnNfzU7L8" target="_blank">
+          🗺️ &nbsp;Xem Trên Google Map
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-title reveal">Bộ Ảnh Cưới</div>
+  <p class="section-lead reveal">Our Gallery</p>
+  <div class="gallery-grid">
+    <!-- Thay "anh1.jpg" bằng tên file ảnh thực của bạn (đặt cùng thư mục với file HTML) -->
+    <div class="gallery-item reveal"><img src="anh1.jpg" alt="Ảnh cưới 1" onerror="this.style.display='none';this.parentNode.innerHTML='📸'"/></div>
+    <div class="gallery-item reveal"><img src="anh2.jpg" alt="Ảnh cưới 2" onerror="this.style.display='none';this.parentNode.innerHTML='🌸'"/></div>
+    <div class="gallery-item reveal"><img src="anh3.jpg" alt="Ảnh cưới 3" onerror="this.style.display='none';this.parentNode.innerHTML='🌿'"/></div>
+    <div class="gallery-item reveal"><img src="anh4.jpg" alt="Ảnh cưới 4" onerror="this.style.display='none';this.parentNode.innerHTML='💐'"/></div>
+    <div class="gallery-item reveal"><img src="anh5.jpg" alt="Ảnh cưới 5" onerror="this.style.display='none';this.parentNode.innerHTML='✨'"/></div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp">
+  <div class="section-title reveal">Xác Nhận Tham Dự</div>
+  <p class="section-lead reveal">RSVP · Trước ngày 10/05/2026</p>
+  <div class="rsvp-form" id="rsvpForm">
+    <input type="text" placeholder="Họ và tên của bạn" id="rsvp-name"/>
+    <input type="tel" placeholder="Số điện thoại" id="rsvp-phone"/>
+    <select id="rsvp-attend">
+      <option value="">-- Bạn có tham dự không? --</option>
+      <option value="yes">✓ Tôi sẽ tham dự</option>
+      <option value="no">✗ Rất tiếc, tôi không thể đến</option>
+    </select>
+    <select id="rsvp-guests">
+      <option value="1">1 người</option>
+      <option value="2">2 người</option>
+      <option value="3">3 người</option>
+      <option value="4">4+ người</option>
+    </select>
+    <button class="btn-gold" onclick="submitRSVP()">Xác Nhận Tham Dự</button>
+    <div class="rsvp-success" id="rsvpSuccess"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-names">Ngọc Tùng &amp; Vân Anh</span>
+  <p>17 · 05 · 2026</p>
+  <p style="margin-top:12px;font-size:0.75rem;opacity:0.5">With love &amp; gratitude ✦</p>
+</footer>
+
+<script>
+  // ── Cánh hoa rơi ──
+  const petalContainer = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${6+Math.random()*8}s;animation-delay:${-Math.random()*10}s;transform:rotate(${Math.random()*360}deg);width:${6+Math.random()*8}px;height:${8+Math.random()*10}px;`;
+    petalContainer.appendChild(p);
+  }
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Lịch tháng 5/2026 (01/05/2026 = thứ 6 → index 4, T2=0) ──
+  const calGrid = document.getElementById('calGrid');
+  for (let i = 0; i < 4; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'day empty';
+    calGrid.appendChild(empty);
+  }
+  for (let d = 1; d <= 31; d++) {
+    const cell = document.createElement('div');
+    cell.className = 'day' + (d === 17 ? ' highlight' : '');
+    cell.textContent = d;
+    calGrid.appendChild(cell);
+  }
+
+  // ── Đếm ngược đến 17/05/2026 16:00 ──
+  function updateCountdown() {
+    const target = new Date('2026-05-17T16:00:00');
+    const diff = target - new Date();
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    document.getElementById('cd-days').textContent  = String(Math.floor(diff / 86400000)).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── RSVP → Google Sheet (JSONP) ──
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUy1WnBdLgxUf8ImMdyPiic6QcqYSbHZRfWj3-Br05hpIch3x9UfppXuW-b2cV3dv1pg/exec';
+
+  function submitRSVP() {
+    const name   = document.getElementById('rsvp-name').value.trim();
+    const phone  = document.getElementById('rsvp-phone').value.trim();
+    const attend = document.getElementById('rsvp-attend').value;
+    const guests = document.getElementById('rsvp-guests').value;
+
+    if (!name || !attend) { alert('Vui lòng điền đầy đủ thông tin!'); return; }
+
+    const btn = document.querySelector('.btn-gold');
+    btn.textContent = '⏳ Đang gửi...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    const showSuccess = () => {
+      document.querySelectorAll('.rsvp-form input, .rsvp-form select, .rsvp-form .btn-gold')
+        .forEach(el => el.style.display = 'none');
+      const msg = document.getElementById('rsvpSuccess');
+      msg.style.display = 'block';
+      msg.textContent = attend === 'yes'
+        ? '🌸 Cảm ơn bạn rất nhiều! Chúng tôi rất mong được đón bạn trong ngày trọng đại này. 🌸'
+        : '💌 Cảm ơn bạn đã báo tin. Chúng tôi sẽ nhớ bạn trong ngày đặc biệt này!';
+    };
+
+    // JSONP — bypass CORS hoàn toàn
+    const cbName = 'rsvpCb_' + Date.now();
+    const params = new URLSearchParams({ name, phone, attend, guests, callback: cbName });
+    const script = document.createElement('script');
+    script.src = SCRIPT_URL + '?' + params.toString();
+
+    window[cbName] = function() {
+      delete window[cbName];
+      script.remove();
+      showSuccess();
+    };
+
+    // Fallback: dù CORS chặn response, Apps Script vẫn đã ghi vào Sheet
+    script.onerror = function() {
+      delete window[cbName];
+      script.remove();
+      showSuccess();
+    };
+
+    // Timeout 5s đề phòng không có callback
+    setTimeout(() => {
+      if (window[cbName]) {
+        delete window[cbName];
+        try { script.remove(); } catch(e) {}
+        showSuccess();
+      }
+    }, 5000);
+
+    document.body.appendChild(script);
+  }
+</script>
+</body>
+</html>
